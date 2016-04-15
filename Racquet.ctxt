@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=game
+comment0.target=Racquet(Game3)
+comment1.params=
+comment1.target=void\ move()
+comment2.params=g
+comment2.target=void\ paint(java.awt.Graphics2D)
+comment3.params=e
+comment3.target=void\ keyReleased(java.awt.event.KeyEvent)
+comment4.params=e
+comment4.target=void\ keyPressed(java.awt.event.KeyEvent)
+numComments=5
