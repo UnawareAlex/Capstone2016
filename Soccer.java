@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Soccer extends JPanel {
 
-	Ball ball = new Ball(this);
-	Racquet racquet = new Racquet(this);
+	SoccerBall ball = new SoccerBall(this);
+	Player racquet = new Player(this);
 	int speed = 1;
 
 	private int getScore() {
@@ -76,8 +76,8 @@ public class Soccer extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		while (true) {
-			game.move();
-			game.repaint();
+			soccer.move();
+			soccer.repaint();
 			Thread.sleep(10);
 		}
 	}
