@@ -14,6 +14,7 @@ public class Soccer extends JPanel {
 
 	SoccerBall ball = new SoccerBall(this);
 	Player racquet = new Player(this);
+	Player2 player2 = new Player2(this);
 	int speed = 1;
 
 	private int getScore() {
@@ -29,11 +30,13 @@ public class Soccer extends JPanel {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				racquet.keyReleased(e);
+				player2.keyReleased(e);
 			}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
 				racquet.keyPressed(e);
+				player2.keyPressed(e);
 			}
 		});
 		setFocusable(true);
@@ -43,6 +46,7 @@ public class Soccer extends JPanel {
 	private void move() {
 		ball.move();
 		racquet.move();
+		player2.move();
 	}
 
 	@Override
@@ -53,6 +57,7 @@ public class Soccer extends JPanel {
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		ball.paint(g2d);
 		racquet.paint(g2d);
+		player2.paint(g2d);
 
 		g2d.setColor(Color.GRAY);
 		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
