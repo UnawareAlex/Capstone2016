@@ -24,14 +24,16 @@ public class SoccerBall {
 			soccer.gameOver();
 		if (collision()){
 			ya = -1;
-			y = soccer.racquet.getTopY() - DIAMETER;
+			//y = soccer.racquet.getTopY() - DIAMETER;
+			y = soccer.player2.getTopY() - DIAMETER;
 		}
 		x = x + xa;
 		y = y + ya;
 	}
 
 	private boolean collision() {
-		return soccer.racquet.getBounds().intersects(getBounds());
+		//return soccer.racquet.getBounds().intersects(getBounds());
+		return soccer.player2.getBounds().intersects(getBounds());
 	}
 
 	public void paint(Graphics2D g) {
