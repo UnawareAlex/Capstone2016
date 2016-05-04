@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Sketch()
-comment1.params=compass\ direction
-comment1.target=void\ updateCords(boolean,\ int)
+comment1.params=dx\ dy
+comment1.target=void\ updatePoints(int,\ int)
 comment2.params=g
 comment2.target=void\ paintComponent(java.awt.Graphics)
 numComments=3

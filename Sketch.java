@@ -1,52 +1,68 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Point;
 import javax.swing.JComponent;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.KeyStroke;
 
 public class Sketch extends JComponent 
 {
-    private int initX;
-    private int initY;
-    private int newX;
-    private int newY;
+    private Point oldPoint;
+    private Point newPoint;
     
     public Sketch()
     {
-        initX = 200;
-        initY = 200;
-        newY = 220;
-        newX = 220;
+        this.oldPoint = new Point(200, 200);
+        this.newPoint = new Point(200, 200);
+        
+        this.setFocusable(true);
+        this.addKeyListener(new EventListener());
     }
     
-    public void updateCords(boolean compass, int direction)
+    public void updatePoints(int dx, int dy)
     {
-        //true if LEFT or RIGHT
-        //flase if UP or DOWN
-        if (compass == true)
-        {
-            initX = newX;
-            initY = newY;
-            newX += direction;
-            System.out.println("Updated point (Left or Right)");
-        }
-        else
-        {
-            initX = newX;
-            initY = newY;
-            newY += direction;
-            System.out.println("Update point (Up or Down)");
-        }
+        oldPoint.setLocation(newPoint.getX(), newPoint.getY());
+        newPoint.translate(dx, dy);
+            System.out.println("Updated point");
+        repaint();
     }
     
     public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D)g;
-        System.out.println("Called paintComponent");
-        g2.draw(new Line2D.Double(initX, initY, newX, newY));
+            System.out.println("Called paintComponent");
+        
+        g2.draw(new Line2D.Double(oldPoint, newPoint));
+    }
+    
+    public class EventListener implements KeyListener
+    {
+        public void keyPressed(KeyEvent e) 
+        {
+            if (e.getKeyCode() == KeyEvent.VK_LEFT)
+            {
+                updatePoints(-1, 0);
+                System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+            }
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+            {
+                updatePoints(1, 0);
+                System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+            }
+            if (e.getKeyCode() == KeyEvent.VK_UP)
+            {
+                updatePoints(0, -1);
+                System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+            }
+            if (e.getKeyCode() == KeyEvent.VK_DOWN)
+            {
+                updatePoints(0, 1);
+                System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
+            }
+        }
+        public void keyTyped(KeyEvent e) {}
+        public void keyReleased(KeyEvent e) {}
     }
 }
