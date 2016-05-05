@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 
 public class Board
 {
-    private static final int FRAME_WIDTH = 400;
-    private static final int FRAME_HEIGHT = 400;
+    private static final int FRAME_WIDTH = 2560;
+    private static final int FRAME_HEIGHT = 1600;
     private Sketch sketch;
     
     public Board()
@@ -25,7 +25,6 @@ public class Board
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
     
     public static void main(String[] args)
     {
