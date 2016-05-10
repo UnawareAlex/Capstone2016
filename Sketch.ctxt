@@ -1,12 +1,16 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Sketch()
+comment0.params=sketch
+comment0.target=Sketch(Sketch)
 comment1.params=dx\ dy
 comment1.target=void\ updatePoints(int,\ int)
 comment2.params=dt
 comment2.target=void\ updateThickness(int)
 comment3.params=
-comment3.target=int\ getDim()
-comment4.params=g
-comment4.target=void\ paintComponent(java.awt.Graphics)
-numComments=5
+comment3.target=void\ clearList()
+comment4.params=
+comment4.target=int\ getDim()
+comment5.params=
+comment5.target=void\ pickColor()
+comment6.params=g
+comment6.target=void\ paintComponent(java.awt.Graphics)
+numComments=7
