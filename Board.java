@@ -38,44 +38,31 @@ public class Board extends JFrame
     private JPanel panel;
     private JButton biggerLine;
     private JButton smallerLine;
-    private JLabel label;
+    private JLabel sizeLabel;
     
     
     public Board() 
     {
         this.sketch = new Sketch();
         
+        this.buttonPanel = new JPanel();
         
+        this.sizeLabel = new JLabel("Line Thickness: " + sketch.getSize());
+            this.buttonPanel.add(sizeLabel);
         
-//         JSlider slider = new JSlider(JSlider.HORIZONTAL, 1, 12, 4);
-//         
-//         slider.setMinorTickSpacing(1);
-//         slider.setMajorTickSpacing(4);
-//         slider.setPaintTicks(true);
-//         slider.setPaintLabels(true);
-//         slider.setSize(200, 200);
-//         slider.setVisible(true);
-//         slider.setFocusable(false);
-//         
-//         Hashtable<Integer, JLabel> table = new Hashtable<Integer, JLabel>();
-//         table.put(4, new JLabel("4"));
-//         table.put(4, new JLabel("8"));
-//         table.put(4, new JLabel("12"));
-//         slider.setLabelTable(table);
-        
-        //this.add(slider, BorderLayout.NORTH);
-        
-        buttonPanel = new JPanel();
-        this.label = new JLabel("Line Thickness");
-        this.buttonPanel.add(label);
         this.biggerLine = new JButton("↑");
-        this.buttonPanel.add(biggerLine);
+            this.biggerLine.addActionListener(new ButtonListener());
+            this.biggerLine.setFocusable(false);
+            this.buttonPanel.add(biggerLine);
+        
         this.smallerLine = new JButton("↓");
-        this.buttonPanel.add(smallerLine);
+            this.smallerLine.addActionListener(new ButtonListener());
+            this.smallerLine.setFocusable(false);
+            this.buttonPanel.add(smallerLine);
         
         this.panel = new JPanel(new BorderLayout());
-        this.panel.add(sketch, BorderLayout.CENTER);
-        this.panel.add(buttonPanel, BorderLayout.SOUTH);
+            this.panel.add(sketch, BorderLayout.CENTER);
+            this.panel.add(buttonPanel, BorderLayout.SOUTH);
       
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,6 +70,7 @@ public class Board extends JFrame
         this.setLayout(new BorderLayout());
         this.add(panel);
         this.setVisible(true);
+        
         this.addKeyListener(new EventListener());
         this.requestFocusInWindow();
     }
@@ -112,6 +100,23 @@ public class Board extends JFrame
         public void keyReleased(KeyEvent e) {}
     }
     
+    public class ButtonListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            if (e.getActionCommand().equals("↑"))
+            {
+                sketch.updateThickness(1);
+            }
+            else if (e.getActionCommand().equals("↓"))
+            {
+                if (sketch.getDim() > 3)
+                {
+                    sketch.updateThickness(-1);
+                }
+            }
+        }
+    }
     public static void main(String[] args)
     {
         Board board = new Board();
