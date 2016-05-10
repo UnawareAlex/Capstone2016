@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.RenderingHints;
 import java.awt.Color;
-public class Sketch extends JComponent 
+import javax.swing.JPanel;
+
+public class Sketch extends JPanel 
 {
     private Point oldPoint;
     private Point newPoint;
@@ -23,10 +25,15 @@ public class Sketch extends JComponent
     private ArrayList<Rectangle> squares;
     private int width;
     private int height;
+//     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
+//     private static final String MOVE_UP = "move up";
+//     private static final String MOVE_DOWN = "move down";
+//     private static final String MOVE_LEFT = "move left";
+//     private static final String RIGHT = "move right";
     
-//     private Ellipse2D.Double bit;
-//     private Ellipse2D.Double newBit;
-//     private ArrayList<Ellipse2D.Double> circles;
+    private Ellipse2D.Double circle;
+    //private Ellipse2D.Double newBit;
+    //private ArrayList<Ellipse2D.Double> circles;
     
     public Sketch()
     {
@@ -34,7 +41,7 @@ public class Sketch extends JComponent
         this.newPoint = new Point(200, 200);
         this.lines = new ArrayList();
         this.setFocusable(true);
-        this.addKeyListener(new EventListener());
+   
         
         width = 8;
         height = 8;
@@ -43,8 +50,7 @@ public class Sketch extends JComponent
         this.newBit = new Rectangle(198, 198, width, height);
         this.squares = new ArrayList();
         
-        
-//         this.bit = new Ellipse2D.Double(198, 198, 4, 4);
+        this.circle = new Ellipse2D.Double(198, 198, width, height);
 //         this.newBit = new Ellipse2D.Double(198, 198, 4, 4);
 //         this.circles = new ArrayList();
 //         circles.add(bit);
@@ -62,7 +68,7 @@ public class Sketch extends JComponent
         Rectangle drawBit = new Rectangle(newBit.getLocation(), newBit.getSize());
         squares.add(drawBit);
         
-//         bit.setFrame(newBit.getX(), newBit.getY(), 4, 4);
+         circle.setFrame(newBit.getX(), newBit.getY(), 8, 8);
 //         newBit.setFrame(bit.getX() + dx, bit.getY() + dy, 4, 4);
 //         Ellipse2D.Double drawBit = new Ellipse2D.Double(newBit.getX(), newBit.getY(), 4, 4);
 //         circles.add(drawBit);
@@ -81,10 +87,14 @@ public class Sketch extends JComponent
 //             g2.draw(newLine);
 //         }
         
-        for (int i = 0; i < squares.size(); i++) 
+        for (int i = 0; i < squares.size() - 1; i++) 
         {
-            g2.draw(squares.get(i));
+            g2.setColor(Color.BLACK);
+            g2.draw(squares.get(i)); 
             g2.fill(squares.get(i));
+            g2.setColor(Color.RED);
+            g2.draw(circle);
+            g2.fill(circle);
         }
         
 //         for (int i = 0; i < circles.size(); i++) 
@@ -93,28 +103,5 @@ public class Sketch extends JComponent
 //         }
     }
     
-    public class EventListener implements KeyListener
-    {
-        public void keyPressed(KeyEvent e) 
-        {
-            if (e.getKeyCode() == KeyEvent.VK_LEFT)
-            {
-                updatePoints(-4, 0);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT)
-            {
-                updatePoints(4, 0);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_UP)
-            {
-                updatePoints(0, -4);
-            }
-            if (e.getKeyCode() == KeyEvent.VK_DOWN)
-            {
-                updatePoints(0, 4);
-            }
-        }
-        public void keyTyped(KeyEvent e) {}
-        public void keyReleased(KeyEvent e) {}
-    }
+    
 }
