@@ -49,29 +49,6 @@ public class Board extends JFrame
         this.sketch = new Sketch(sketch);
         this.buttonPanel = new ControlPanel(sketch);
         
-//         this.buttonPanel = new JPanel();
-//         
-//         this.sizeLabel = new JLabel("Line Thickness: " + sketch.getDim());
-//             this.buttonPanel.add(sizeLabel);
-//         
-//         this.biggerLine = new JButton("↑");
-//             this.biggerLine.addActionListener(new ButtonListener());
-//             this.biggerLine.setFocusable(false);
-//             this.buttonPanel.add(biggerLine);
-//         
-//         this.smallerLine = new JButton("↓");
-//             this.smallerLine.addActionListener(new ButtonListener());
-//             this.smallerLine.setFocusable(false);
-//             this.buttonPanel.add(smallerLine);
-//             
-//         this.pickColor = new JButton("Pick Color"); //adding the buttons to the ControlPanel
-//             this.add(this.pickColor);
-//             
-//         this.clear = new JButton("Clear");
-//             this.clear.addActionListener(new ButtonListener());
-//             this.clear.setFocusable(false);
-//             this.buttonPanel.add(clear);
-        
         this.panel = new JPanel(new BorderLayout());
             this.panel.add(sketch, BorderLayout.CENTER);
             this.panel.add(buttonPanel, BorderLayout.SOUTH);
@@ -111,30 +88,6 @@ public class Board extends JFrame
         public void keyTyped(KeyEvent e) {}
         public void keyReleased(KeyEvent e) {}
     }
-    
-//     public class ButtonListener implements ActionListener
-//     {
-//         public void actionPerformed(ActionEvent e)
-//         {
-//             if (e.getActionCommand().equals("↑"))
-//             {
-//                 sketch.updateThickness(1);
-//                 sizeLabel.setText("Line Thickness: " + sketch.getDim());
-//             }
-//             else if (e.getActionCommand().equals("↓"))
-//             {
-//                 if (sketch.getDim() > 3)
-//                 {
-//                     sketch.updateThickness(-1);
-//                     sizeLabel.setText("Line Thickness: " + sketch.getDim());
-//                 }
-//             }
-//             else if (e.getActionCommand().equals("Clear"))
-//             {
-//                 sketch.clearList();
-//             }
-//         }
-//     }
     
     public static void main(String[] args)
     {

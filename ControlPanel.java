@@ -27,6 +27,7 @@ import java.util.Hashtable;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class ControlPanel extends JPanel
 {
     private JPanel buttonPanel;
@@ -36,6 +37,11 @@ public class ControlPanel extends JPanel
     private JButton clear;
     private JButton pickColor;
     private Sketch sketch;
+    /**
+     * Adds labels and buttons to the ControlPanel panel along with their corresponding ActionListener
+     * 
+     * @param drawing       an instance of the Sketch class which allows access to the Sketch class through the use of accessor methods in the ActionListeners
+     */
     public ControlPanel(Sketch drawing)
     {
         //this.buttonPanel = new JPanel();
@@ -70,6 +76,12 @@ public class ControlPanel extends JPanel
     
     public class ButtonListener implements ActionListener
     {
+        /**
+         * Creates ActionListener for all buttons in ControlPanel. The ActionListener updates the thickness of the lines,
+         *      the color of the line and clears the Board when the ActionCommands are called.
+         * 
+         * @param e
+         */
         public void actionPerformed(ActionEvent e)
         {
             if (e.getActionCommand().equals("↑"))

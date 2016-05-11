@@ -1,16 +1,23 @@
 #BlueJ class context
 comment0.params=sketch
 comment0.target=Sketch(Sketch)
+comment0.text=\n\ \n\ \n\ @param\ sketch\ \ \ \ instance\ of\ the\ Sketch\ class\n
 comment1.params=dx\ dy
 comment1.target=void\ updatePoints(int,\ int)
+comment1.text=\n\ Updates\ the\ cords\ and\ dimensions\ of\ the\ initial\ rectangle\ and\ sets\ the\ cords\ and\ dimensions\ of\ the\ new\n\ \ \ \ \ \ rectangle\ based\ on\ the\ passed\ in\ parameter.\ Then,\ a\ new\ rectangle\ is\ constructed\ with\ the\ same\ \n\ \ \ \ \ \ size\ and\ dimensions\ as\ the\ updated\ rectangle\ and\ added\ to\ the\ ArrayList\ squares.\ The\ circle\ is\ also\n\ \ \ \ \ \ updated\ to\ stay\ at\ the\ front\ of\ the\ line.\n\ \n\ @param\ dx\ \ \ \ change\ in\ x-cord\n\ @param\ dy\ \ \ \ change\ in\ y-cord\n
 comment2.params=dt
 comment2.target=void\ updateThickness(int)
+comment2.text=\n\ Updates\ the\ thickness\ of\ the\ line\ by\ changing\ the\ instance\ variables\ width\ and\ height\ of\ the\ rectangles\n\n\ @param\ \ dt\ \ \ change\ in\ the\ width/height\ of\ the\ rectangles\n
 comment3.params=
 comment3.target=void\ clearList()
+comment3.text=\n\ \n\ Clears\ the\ ArrayList\ squares\ and\ calls\ repaint()\ in\ order\ to\ clear\ the\ board\n\ \n
 comment4.params=
 comment4.target=int\ getDim()
+comment4.text=\n\ \n\ Returns\ the\ instance\ variable\ width\ a.k.a.\ the\ dimensions\ of\ the\ squares\ used\ to\ draw\ the\ line\n\ \n\ @return\ \ \ \ \ \ the\ instance\ variable\ width\ (which\ will\ always\ be\ the\ same\ as\ height)\n\n
 comment5.params=
 comment5.target=void\ pickColor()
+comment5.text=\n\ \n\ Sets\ the\ instance\ variable\ currentColor\ to\ a\ new\ color\ as\ designated\ by\ JColorChooser\n\ \n
 comment6.params=g
 comment6.target=void\ paintComponent(java.awt.Graphics)
+comment6.text=\n\ \n\ Paints\ the\ ArrayList\ squares\ and\ fills\ them\ with\ a\ pre-determined\ color\ as\ well\ as\ the\ leading\ circle\ \n\ \n
 numComments=7

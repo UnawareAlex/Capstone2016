@@ -26,6 +26,11 @@ public class Sketch extends JPanel
     
     private Ellipse2D.Double circle;
     
+    /**
+     * 
+     * 
+     * @param sketch    instance of the Sketch class
+     */
     public Sketch(Sketch sketch)
     {
         width = 4;
@@ -40,6 +45,15 @@ public class Sketch extends JPanel
         this.circle = new Ellipse2D.Double(198, 198, width, height);
     }
     
+    /**
+     * Updates the cords and dimensions of the initial rectangle and sets the cords and dimensions of the new
+     *      rectangle based on the passed in parameter. Then, a new rectangle is constructed with the same 
+     *      size and dimensions as the updated rectangle and added to the ArrayList squares. The circle is also
+     *      updated to stay at the front of the line.
+     * 
+     * @param dx    change in x-cord
+     * @param dy    change in y-cord
+     */
     public void updatePoints(int dx, int dy)
     {
         this.bit.setRect((int)newBit.getX(), (int)newBit.getY(), width, height);
@@ -52,29 +66,54 @@ public class Sketch extends JPanel
         repaint();
     }
     
+    /**
+     * Updates the thickness of the line by changing the instance variables width and height of the rectangles
+     *
+     * @param  dt   change in the width/height of the rectangles
+     */
     public void updateThickness(int dt)
     {
         width += dt;
         height += dt;
     }
     
+    /**
+     * 
+     * Clears the ArrayList squares and calls repaint() in order to clear the board
+     * 
+     */
     public void clearList()
     {
         squares.clear();
         repaint();
     }
    
-    public int getDim()
+    /**
+     * 
+     * Returns the instance variable width a.k.a. the dimensions of the squares used to draw the line
+     * 
+     * @return      the instance variable width (which will always be the same as height)
+     *
+     */public int getDim()
     {
         return width;
     }
     
+    /**
+     * 
+     * Sets the instance variable currentColor to a new color as designated by JColorChooser
+     * 
+     */
     public void pickColor() 
     {
         currentColor = JColorChooser.showDialog(canvas, "Pick a Color", currentColor);
     }
     
-    public void paintComponent(Graphics g)
+    /**
+     * 
+     * Paints the ArrayList squares and fills them with a pre-determined color as well as the leading circle 
+     * 
+     */public void paintComponent(Graphics g)
     {
         Graphics2D g2 = (Graphics2D) g;
         for (int i = 0; i < squares.size() - 1; i++) 
