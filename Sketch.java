@@ -9,11 +9,16 @@ import javax.swing.KeyStroke;
 import java.util.ArrayList;
 import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
-import java.awt.RenderingHints;
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JColorChooser;
 
+/**
+ * Combines DrawingPanel and ControlPanel Classes into one frame where it is presented to user in a GUI
+ * 
+ * Alex Arnold 
+ * 5/10/16
+ */
 public class Sketch extends JPanel 
 {
     private Rectangle bit;
@@ -23,17 +28,15 @@ public class Sketch extends JPanel
     private int height;
     private Color currentColor;
     private Sketch canvas;
-    
     private Ellipse2D.Double circle;
     
     /**
      * 
-     * 
-     * @param sketch    instance of the Sketch class
+     * Basic constructor for the Sketch class
      */
     public Sketch(Sketch sketch)
     {
-        width = 4;
+        width = 4; //starting values
         height = 4;
         
         this.currentColor = Color.BLACK;
@@ -42,7 +45,7 @@ public class Sketch extends JPanel
         this.newBit = new Rectangle(198, 198, width, height);
         this.squares = new ArrayList();
         
-        this.circle = new Ellipse2D.Double(198, 198, width, height);
+        this.circle = new Ellipse2D.Double(198, 198, width, height); //will always be at front of the line so that the user can tell where the beginning of their line is
     }
     
     /**
@@ -56,12 +59,12 @@ public class Sketch extends JPanel
      */
     public void updatePoints(int dx, int dy)
     {
-        this.bit.setRect((int)newBit.getX(), (int)newBit.getY(), width, height);
-        this.newBit.setRect(this.bit.getX() + dx, this.bit.getY() + dy, width, height);
-        Rectangle drawBit = new Rectangle(newBit.getLocation(), newBit.getSize());
+        this.bit.setRect((int)newBit.getX(), (int)newBit.getY(), width, height); //set initial square to last new square
+        this.newBit.setRect(this.bit.getX() + dx, this.bit.getY() + dy, width, height); //set new square to the updated point based on keyboard input
+        Rectangle drawBit = new Rectangle(newBit.getLocation(), newBit.getSize()); //construct a new square identical to newBit and add it to the ArrayList to be drawn later
         this.squares.add(drawBit);
         
-        this.circle.setFrame(newBit.getX(), newBit.getY(), width, height);
+        this.circle.setFrame(newBit.getX(), newBit.getY(), width, height); //updating the position/size of the circle in front
         
         repaint();
     }
@@ -73,7 +76,7 @@ public class Sketch extends JPanel
      */
     public void updateThickness(int dt)
     {
-        width += dt;
+        width += dt; //updating thickness of line
         height += dt;
     }
     
@@ -85,7 +88,7 @@ public class Sketch extends JPanel
     public void clearList()
     {
         squares.clear();
-        repaint();
+        repaint(); //So that the user doesn't have to press the keyboard to wait for the GUI to repaint. This way, the panel clears instantly when 'Clear' is pressed
     }
    
     /**
@@ -106,7 +109,7 @@ public class Sketch extends JPanel
      */
     public void pickColor() 
     {
-        currentColor = JColorChooser.showDialog(canvas, "Pick a Color", currentColor);
+        currentColor = JColorChooser.showDialog(canvas, "Pick a Color", currentColor); //lets the user pick a new color for the line
     }
     
     /**
@@ -126,6 +129,4 @@ public class Sketch extends JPanel
             g2.fill(circle);
         }
     }
-    
-    
 }

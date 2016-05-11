@@ -1,57 +1,36 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.Hashtable;
-import javax.swing.JButton;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+/**
+ * Combines Sketch and ControlPanel Classes into one frame where it is presented to user in a GUI
+ * 
+ * Alex Arnold 
+ * 5/10/16
+ */
 public class Board extends JFrame
 {
     private static final int FRAME_WIDTH = 2560;
     private static final int FRAME_HEIGHT = 1600;
     private Sketch sketch;
     private ControlPanel buttonPanel;
-    private JFrame frame;
-    //private JPanel buttonPanel;
     private JPanel panel;
-    private JButton biggerLine;
-    private JButton smallerLine;
-    private JLabel sizeLabel;
-    private JButton clear;
-    private JButton pickColor;
-    private Color currentColor;
     
+    /**
+     * Default constructor for objects of class DrawingEditor
+     */
     public Board() 
     {
         this.sketch = new Sketch(sketch);
         this.buttonPanel = new ControlPanel(sketch);
         
-        this.panel = new JPanel(new BorderLayout());
-            this.panel.add(sketch, BorderLayout.CENTER);
-            this.panel.add(buttonPanel, BorderLayout.SOUTH);
+        this.panel = new JPanel(new BorderLayout()); //Need a singular panel to add to my frame
+        this.panel.add(sketch, BorderLayout.CENTER);
+        this.panel.add(buttonPanel, BorderLayout.SOUTH);
       
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,17 +39,21 @@ public class Board extends JFrame
         this.add(panel);
         this.setVisible(true);
         
-        this.addKeyListener(new EventListener());
+        this.addKeyListener(new EventListener()); //frame will now listen to keyboard events
         this.requestFocusInWindow();
     }
     
+    /**
+     * Adds KeyListener to the designated arrow keys and calls sketch.updatePoints when keys are pressed
+     * 
+     */
     public class EventListener implements KeyListener
     {
         public void keyPressed(KeyEvent e) 
         {
             if (e.getKeyCode() == KeyEvent.VK_LEFT)
             {
-                sketch.updatePoints(-4, 0);
+                sketch.updatePoints(-4, 0); 
             }
             if (e.getKeyCode() == KeyEvent.VK_RIGHT)
             {

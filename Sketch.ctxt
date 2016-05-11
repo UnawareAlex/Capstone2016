@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=sketch
 comment0.target=Sketch(Sketch)
-comment0.text=\n\ \n\ \n\ @param\ sketch\ \ \ \ instance\ of\ the\ Sketch\ class\n
+comment0.text=\n\ \n\ Basic\ constructor\ for\ the\ Sketch\ class\n
 comment1.params=dx\ dy
 comment1.target=void\ updatePoints(int,\ int)
 comment1.text=\n\ Updates\ the\ cords\ and\ dimensions\ of\ the\ initial\ rectangle\ and\ sets\ the\ cords\ and\ dimensions\ of\ the\ new\n\ \ \ \ \ \ rectangle\ based\ on\ the\ passed\ in\ parameter.\ Then,\ a\ new\ rectangle\ is\ constructed\ with\ the\ same\ \n\ \ \ \ \ \ size\ and\ dimensions\ as\ the\ updated\ rectangle\ and\ added\ to\ the\ ArrayList\ squares.\ The\ circle\ is\ also\n\ \ \ \ \ \ updated\ to\ stay\ at\ the\ front\ of\ the\ line.\n\ \n\ @param\ dx\ \ \ \ change\ in\ x-cord\n\ @param\ dy\ \ \ \ change\ in\ y-cord\n
